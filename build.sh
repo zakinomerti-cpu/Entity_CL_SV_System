@@ -1,0 +1,1 @@
+tcc main.c SEntityBase.c SEntityTest.c dataArr.c -o main -I/ -lm
