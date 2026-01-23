@@ -1,6 +1,8 @@
 #ifndef SENTITY_H
 #define SENTITY_H
 
+#include <stdint.h>
+
 typedef struct SEntityBase SEntityBase;
 typedef struct dataArr dataArr;
 
@@ -16,7 +18,7 @@ typedef struct SEntity {
 	char isReady;
 } SEntity;
 
-SEntity* SEntityTest_new(const char* name);
+SEntity* SEntityTest_new(const char* name, uint16_t netID);
 
 //for first load
 unsigned char* SEntitySerializeFull(SEntity* ent);

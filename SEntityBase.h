@@ -1,12 +1,20 @@
 #ifndef SENTITYBASE_H
 #define SENTITYBASE_H
 
-typedef struct SEntityBase{
+#include <stdint.h>
+
+typedef struct SEntityBase {
 	char entityName[32];
 	char entityType[32];
 	float pos[3];
 	float rot[3];
 	float scl[3];
+	
+	uint16_t netID;
+	int8_t dpos[3];
+	uint8_t	drot[3];
+	int8_t dscl;
+	uint8_t mask;
 
 	void (*setPosition)(struct SEntityBase*, float, float, float);
 	void (*setRotation)(struct SEntityBase*, float, float, float);
@@ -17,6 +25,6 @@ typedef struct SEntityBase{
 	float* (*getScale)(struct SEntityBase*);
 } SEntityBase;
 
-SEntityBase* SEntityBase_new(const char* name, const char* type);
+SEntityBase* SEntityBase_new(const char* name, const char* type, uint16_t netID);
 
 #endif

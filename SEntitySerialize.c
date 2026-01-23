@@ -21,7 +21,7 @@ void SerializeFloat(unsigned char* buf, float a) {
 	SerializeUint32LE(buf, tmp);
 }
 
-unsigned char* SEntitySerializeFull(SEntity* ent, uint16_t netID) {
+unsigned char* SEntitySerializeFull(SEntity* ent) {
 	unsigned char* out = malloc(sizeof(unsigned char)*102);
 	if(!out) return NULL;
 
@@ -43,3 +43,21 @@ unsigned char* SEntitySerializeFull(SEntity* ent, uint16_t netID) {
 	SerializeFloat(out + offset, ent->core->scl[2]); offset += 4;
 	return out;
 }
+
+unsigned char* SEntitySerializeDelta(SEntity* ent) {
+}
+
+/*
+typedef struct SEntityDelta {
+	uint16_t netID;
+	uint8_t movValue[3];
+	uint8_t rotValue[3];
+	uint8_t sclValue;
+} SEntityDelta;
+
+typedef struct netPack; {
+	uint32_t tick;
+	uint24_t entcount;
+	unsigned char* ents;
+} netPack;
+*/
