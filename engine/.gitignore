@@ -1,0 +1,15 @@
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+engine
+main
+
+CMakeFiles/
+CMakeCache.txt
+Makefile
