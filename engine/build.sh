@@ -1,1 +1,9 @@
-gcc main.c SEntityBase.c SEntityTest.c dataArr.c -o main -I/ -lm
+#!/bin/bash
+gcc main.c / 
+	SEntityBase.c  /
+	SEntityTest.c  / 
+	dataArr.c /
+	-o main / 
+    -IDSnapshotMaker / 
+    -IEntityLoader /
+    -lm /
