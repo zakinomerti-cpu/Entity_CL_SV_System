@@ -53,12 +53,6 @@ SEntityBase* SEntityBase_new(const char* name, const char* type, uint16_t netID)
 	out->rot[0] = 0.; out->rot[1] = 0.; out->rot[2] = 0.;
 	out->scl[0] = 1.; out->scl[1] = 1.; out->scl[2] = 1.;
 
-	out->netID = netID;
-	out->dpos[0] = 0; out->dpos[1] = 0; out->dpos[2] = 0;
-	out->drot[0] = 0; out->drot[1] = 0; out->drot[2] = 0;
-	out->dscl = 0;
-	out->mask = 0;
-
 	out->setPosition = SEntityBase_setPosition;
 	out->setRotation = SEntityBase_setRotation;
 	out->setScale = SEntityBase_setScale;

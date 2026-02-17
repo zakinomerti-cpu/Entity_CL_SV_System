@@ -7,7 +7,7 @@ typedef struct SEntityBase SEntityBase;
 typedef struct dataArr dataArr;
 
 typedef struct SEntity {
-	SEntityBase* core;
+	SEntityBase* core;  
 	void (*setInputData)(struct SEntity*, dataArr* data);
 	void (*onUpdate)(struct SEntity*, unsigned int tick);
 	void (*onCreate)(struct SEntity*);
@@ -17,8 +17,6 @@ typedef struct SEntity {
 	dataArr* InData;
 	char isReady;
 } SEntity;
-
-SEntity* SEntityTest_new(const char* name, uint16_t netID);
 
 //for first load
 unsigned char* SEntitySerializeFull(SEntity* ent);
