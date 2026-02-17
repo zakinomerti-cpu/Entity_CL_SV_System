@@ -9,12 +9,6 @@ typedef struct SEntityBase {
 	float pos[3];
 	float rot[3];
 	float scl[3];
-	
-	uint16_t netID;
-	int8_t dpos[3];
-	uint8_t	drot[3];
-	int8_t dscl;
-	uint8_t mask;
 
 	void (*setPosition)(struct SEntityBase*, float, float, float);
 	void (*setRotation)(struct SEntityBase*, float, float, float);
