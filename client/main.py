@@ -5,7 +5,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 # UDP setup
-IP = "127.0.0.1"
+IP = "0.0.0.0"
 PORT = 9000
 BUFFER_SIZE = 65535
 FORMAT = "<32s32sfffffffff"  # name, type, pos(3), rot(3), scl(3)
