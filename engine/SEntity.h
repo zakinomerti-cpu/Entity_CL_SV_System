@@ -18,6 +18,8 @@ typedef struct SEntity {
 	char isReady;
 } SEntity;
 
+SEntity* SEntityTest_new(const char* name);
+
 //for first load
 unsigned char* SEntitySerializeFull(SEntity* ent);
 

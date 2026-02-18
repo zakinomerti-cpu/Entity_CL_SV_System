@@ -19,6 +19,6 @@ typedef struct SEntityBase {
 	float* (*getScale)(struct SEntityBase*);
 } SEntityBase;
 
-SEntityBase* SEntityBase_new(const char* name, const char* type, uint16_t netID);
+SEntityBase* SEntityBase_new(const char* name, const char* type);
 
 #endif

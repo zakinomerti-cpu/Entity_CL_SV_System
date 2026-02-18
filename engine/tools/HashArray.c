@@ -2,9 +2,10 @@
 #include "dataArr.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
-long HashArrToolSimpleHash(const char* str) {
-    long hash = 5381;
+uint64_t HashArrToolSimpleHash(const char* str) {
+    uint64_t hash = 5381;
     int c;
 
     while ((c = *str++)) {
@@ -14,7 +15,7 @@ long HashArrToolSimpleHash(const char* str) {
     return hash;
 }
 
-dataArr* HashArrToolGetInnerArray(dataArr* arr, int index) {
+dataArr* HashArrToolGetInnerArray(dataArr* arr, uint64_t index) {
     dataArr* tmp = arr->getElement(arr, index);
     if (!tmp) {
         tmp = dataArr_new();
@@ -26,7 +27,7 @@ dataArr* HashArrToolGetInnerArray(dataArr* arr, int index) {
 
 void HashArrToolAddObject(HashArray* arr, void* data, const char* name) {
     if (data == NULL) return;
-    size_t hashIndex = HashArrToolSimpleHash(name) % arr->elementCount;
+    uint64_t hashIndex = HashArrToolSimpleHash(name) % arr->elementCount;
     dataArr* innerArr = HashArrToolGetInnerArray(arr->Data, hashIndex);
     HashArrayElement* element = (HashArrayElement*)malloc(
         sizeof(HashArrayElement)); if (!element) return;
@@ -41,7 +42,7 @@ void HashArrToolAddObject(HashArray* arr, void* data, const char* name) {
 }
 
 void* HashArrToolGetObject(HashArray* arr, const char* name) {
-    size_t hashIndex = HashArrToolSimpleHash(name) % arr->elementCount;
+    size_t hashIndex = (size_t)HashArrToolSimpleHash(name) % (size_t)arr->elementCount;
     dataArr* innerArr = HashArrToolGetInnerArray(arr->Data, hashIndex);
     for (size_t iter = 0; iter < innerArr->size; iter++) {
         HashArrayElement* temp = 
@@ -54,7 +55,7 @@ void* HashArrToolGetObject(HashArray* arr, const char* name) {
     return NULL;
 }
 
-HashArray* HashArray_new(int size)
+HashArray* HashArray_new(uint64_t size)
 {
     HashArray* arr = (HashArray*)malloc(sizeof(HashArray));
     if (!arr) return NULL;

@@ -4,13 +4,14 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 
 void SEntityTest_setInputData(SEntity* ent, dataArr* data) {
 
 }
 
 void SEntityTest_onUpdate(SEntity* ent, unsigned int tick) {
-    
+    printf("%d\n", tick);
 }
 
 void SEntityTest_onCreate(SEntity* ent) {
@@ -21,11 +22,11 @@ void SEntityTest_entityInit(SEntity* ent) {
 	ent->isReady = 1;
 }
 
-SEntity* SEntityTest_new(const char* name, uint16_t netID) {
+SEntity* SEntityTest_new(const char* name) {
 	SEntity* ent = malloc(sizeof(SEntity));
 	if(!ent) return NULL;
 
-	ent->core = SEntityBase_new(name, "ent_tst", netID);
+	ent->core = SEntityBase_new(name, "ent_tst");
 	ent->setInputData = SEntityTest_setInputData;
 	ent->onUpdate = SEntityTest_onUpdate;
 	ent->onCreate = SEntityTest_onCreate;

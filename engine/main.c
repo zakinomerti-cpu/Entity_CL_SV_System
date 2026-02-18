@@ -10,17 +10,19 @@
 #include "dataArr.h"
 #include "HashArray.h"
 #include "globals.h"
-
 #include <unistd.h>
 
+dataArr* clients = NULL;
+HashArray* worldList = NULL;
+HashArray* entList = NULL;
+
 void init() {
-	dataArr* clients = dataArr_new();
-	HashArray* worldList = loadValidEntityList();
-	HashArray* entList = loadMap();
+	clients = dataArr_new();
+	worldList = loadMap();
+	entList = loadValidEntityList();
 }
 
 void pausen() {
-	printf("12\n");
 	usleep(500000); // 500 мс
 }
 
@@ -31,7 +33,7 @@ int main() {
 	char serverRunning = 1;
 	while(serverRunning) {
 		receiveUserCmds();
-		updateEntities(tick);
+		updateEntities(worldList, tick);
 		snapshotMaker();
 		snapshotSender();
 

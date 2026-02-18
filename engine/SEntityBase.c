@@ -42,7 +42,7 @@ float* SEntityBase_getScale(SEntityBase* ent) {
 	return out;
 }
 
-SEntityBase* SEntityBase_new(const char* name, const char* type, uint16_t netID) {
+SEntityBase* SEntityBase_new(const char* name, const char* type) {
 	SEntityBase* out = malloc(sizeof(SEntityBase));
 	if(!out) return NULL;
 
