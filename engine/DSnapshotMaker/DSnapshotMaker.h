@@ -2,6 +2,7 @@
 #define DSNAPSHOTMAKER_H
 
 typedef struct HashArray HashArray;
-void snapshotMaker(HashArray*);
+typedef struct dataArr dataArr;
+dataArr* snapshotMaker(HashArray*);
 
 #endif

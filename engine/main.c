@@ -15,7 +15,6 @@
 dataArr* clients = NULL;
 HashArray* worldList = NULL;
 HashArray* entList = NULL;
-HashArray* snapshotList = NULL;
 
 void init() {
 	clients = dataArr_new();
@@ -35,8 +34,8 @@ int main() {
 	while(serverRunning) {
 		receiveUserCmds();
 		updateEntities(worldList, tick);
-		snapshotMaker(worldList);
-		snapshotSender();
+		dataArr* sArr = snapshotMaker(worldList);
+		snapshotSender(sArr);
 
 		tick += 1;
 		pausen();

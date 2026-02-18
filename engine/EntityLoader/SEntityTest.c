@@ -5,13 +5,18 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <math.h>
 
 void SEntityTest_setInputData(SEntity* ent, dataArr* data) {
 
 }
 
 void SEntityTest_onUpdate(SEntity* ent, unsigned int tick) {
-    printf("%d\n", tick);
+	ent->core->pos[0] += 0.01f;
+	ent->core->pos[1] -= 0.001f;
+	ent->core->pos[2] += 0.002f;
+	printf("%f\t%f\t%f\t%d\n", ent->core->pos[0], 
+		ent->core->pos[1], ent->core->pos[2], tick);
 }
 
 void SEntityTest_onCreate(SEntity* ent) {

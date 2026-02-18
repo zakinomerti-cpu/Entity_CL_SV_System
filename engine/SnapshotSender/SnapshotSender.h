@@ -1,6 +1,7 @@
 #ifndef SNAPSHOTSENDER_H
 #define SNAPSHOTSENDER_H
 
-void snapshotSender();
+typedef struct dataArr dataArr;
+void snapshotSender(dataArr*);
 
 #endif
