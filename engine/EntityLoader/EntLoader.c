@@ -1,5 +1,6 @@
 #include "EntLoader.h"
+#include "HashArray.h"
 
-void loadValidEntityList() {
-    
+HashArray* loadValidEntityList() {
+    return 0;
 }

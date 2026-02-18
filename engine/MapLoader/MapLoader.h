@@ -1,6 +1,8 @@
 #ifndef MAPLOADER_H
 #define MAPLOADER_H
 
-void loadMap();
+typedef struct HashArray HashArray;
+
+HashArray* loadMap();
 
 #endif

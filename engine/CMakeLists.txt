@@ -9,6 +9,8 @@ set(SOURCES
     SnapshotSender/SnapshotSender.c
     UserCmdReceiver/UserCmdReceiver.c
     MapLoader/MapLoader.c
+    tools/dataArr.c
+    tools/HashArray.c
 )
 
 add_executable(engine ${SOURCES})
@@ -20,4 +22,5 @@ target_include_directories(engine PRIVATE
     ${PROJECT_SOURCE_DIR}/SnapshotSender
     ${PROJECT_SOURCE_DIR}/UserCmdReceiver
     ${PROJECT_SOURCE_DIR}/MapLoader
+    ${PROJECT_SOURCE_DIR}/tools
 )

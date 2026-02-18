@@ -1,6 +1,7 @@
 #ifndef ENTLOADER_H
 #define ENTLOADER_H
 
-void loadValidEntityList();
+typedef struct HashArray HashArray;
+HashArray* loadValidEntityList();
 
 #endif

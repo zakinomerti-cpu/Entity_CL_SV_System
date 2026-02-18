@@ -1,5 +1,7 @@
 #include "MapLoader.h"
+#include "HashArray.h"
+#include "stdio.h"
 
-void loadMap() {
-    
+HashArray* loadMap() {
+    return NULL;
 }

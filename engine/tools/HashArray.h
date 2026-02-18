@@ -1,0 +1,22 @@
+#ifndef HASHARRAYCLASS_H
+#define HASHARRAYCLASS_H
+
+typedef struct dataArr dataArr;
+
+typedef struct HashArrayElement {
+	char* name;
+	void* data;
+} HashArrayElement;
+
+typedef struct HashArray {
+	void (*addObject)(struct HashArray*, void*, const char*);
+	void* (*getObject)(struct HashArray*, const char*);
+
+	dataArr* (*getInnerArray)(struct dataArr*, int);
+	int elementCount;
+	dataArr* Data;
+} HashArray;
+
+HashArray* HashArray_new(int);
+
+#endif

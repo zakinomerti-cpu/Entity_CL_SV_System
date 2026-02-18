@@ -5,7 +5,7 @@ void dataArr_addToArray(dataArr* arr, void* element) {
 	if(arr->size >= arr->capacity) {
 		arr->capacity = (arr->capacity == 0) ? 2 :
 			arr->capacity * 2;
-		void** tmp = realloc(arr->data, arr->capacity);
+		void** tmp = realloc(arr->data, arr->capacity * sizeof(void*));
 		if(!tmp) return;
 		arr->data = tmp;
 	}
