@@ -1,6 +1,7 @@
 #ifndef DSNAPSHOTMAKER_H
 #define DSNAPSHOTMAKER_H
 
-void snapshotMaker();
+typedef struct HashArray HashArray;
+void snapshotMaker(HashArray*);
 
 #endif

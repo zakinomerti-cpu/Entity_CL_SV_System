@@ -1,5 +1,5 @@
 #include "DSnapshotMaker.h"
 
-void snapshotMaker() {
+void snapshotMaker(HashArray* arr) {
     
 }

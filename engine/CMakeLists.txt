@@ -13,6 +13,7 @@ set(SOURCES
     tools/HashArray.c
     tools/dataArr.c
     SEntityBase.c
+    SEntitySerialize.c
 )
 
 add_executable(engine ${SOURCES})

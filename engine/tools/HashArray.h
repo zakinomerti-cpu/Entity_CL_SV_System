@@ -10,11 +10,16 @@ typedef struct HashArrayElement {
 } HashArrayElement;
 
 typedef struct HashArray {
+	//public
 	void (*addObject)(struct HashArray*, void*, const char*);
 	void* (*getObject)(struct HashArray*, const char*);
-
-	dataArr* (*getInnerArray)(struct dataArr*, uint64_t);
+	char (*InnerArrayIsExist)(struct HashArray*, uint64_t);
+	void* (*getObjectByIndex)(struct HashArray*, uint64_t x, uint64_t y);
+	uint64_t (*getInnerArraySize)(struct HashArray*, uint64_t);
 	uint64_t elementCount;
+
+	//private
+	dataArr* (*getInnerArray)(struct HashArray*, uint64_t);
 	dataArr* Data;
 } HashArray;
 

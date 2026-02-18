@@ -15,11 +15,34 @@ uint64_t HashArrToolSimpleHash(const char* str) {
     return hash;
 }
 
-dataArr* HashArrToolGetInnerArray(dataArr* arr, uint64_t index) {
-    dataArr* tmp = arr->getElement(arr, index);
+uint64_t HashArrToolGetInnerArraySize(HashArray* arr, uint64_t index) {
+    dataArr* tmp = arr->Data->getElement(arr->Data, index);
+    if(!tmp) return 0;
+
+    return (uint64_t)tmp->size;
+}
+
+void* HashArrToolGetObjectByIndex(HashArray* arr, uint64_t x, uint64_t y) {
+    dataArr* tmp = arr->Data->getElement(arr->Data, x);
+    if(!tmp) return NULL;
+
+    HashArrayElement* hae = tmp->getElement(tmp, y);
+    if(!hae) return NULL;
+
+    return hae->data;
+}
+
+char HashArrToolInnerArrayIsExist(HashArray* arr, uint64_t index) {
+    dataArr* tmp = arr->Data->getElement(arr->Data, index);
+    if(!tmp) return 0;
+    return 1;
+}
+
+dataArr* HashArrToolGetInnerArray(HashArray* arr, uint64_t index) {
+    dataArr* tmp = arr->Data->getElement(arr->Data, index);
     if (!tmp) {
         tmp = dataArr_new();
-        arr->data[index] = tmp;
+         arr->Data->data[index] = tmp;
     }
     return tmp;
 }
@@ -28,7 +51,7 @@ dataArr* HashArrToolGetInnerArray(dataArr* arr, uint64_t index) {
 void HashArrToolAddObject(HashArray* arr, void* data, const char* name) {
     if (data == NULL) return;
     uint64_t hashIndex = HashArrToolSimpleHash(name) % arr->elementCount;
-    dataArr* innerArr = HashArrToolGetInnerArray(arr->Data, hashIndex);
+    dataArr* innerArr = HashArrToolGetInnerArray(arr, hashIndex);
     HashArrayElement* element = (HashArrayElement*)malloc(
         sizeof(HashArrayElement)); if (!element) return;
 
@@ -43,7 +66,7 @@ void HashArrToolAddObject(HashArray* arr, void* data, const char* name) {
 
 void* HashArrToolGetObject(HashArray* arr, const char* name) {
     size_t hashIndex = (size_t)HashArrToolSimpleHash(name) % (size_t)arr->elementCount;
-    dataArr* innerArr = HashArrToolGetInnerArray(arr->Data, hashIndex);
+    dataArr* innerArr = HashArrToolGetInnerArray(arr, hashIndex);
     for (size_t iter = 0; iter < innerArr->size; iter++) {
         HashArrayElement* temp = 
             (HashArrayElement*)innerArr->getElement(innerArr, iter);
@@ -63,6 +86,9 @@ HashArray* HashArray_new(uint64_t size)
     arr->addObject = HashArrToolAddObject;
     arr->getObject = HashArrToolGetObject;
     arr->getInnerArray = HashArrToolGetInnerArray;
+    arr->InnerArrayIsExist = HashArrToolInnerArrayIsExist;
+    arr->getObjectByIndex = HashArrToolGetObjectByIndex;
+    arr->getInnerArraySize = HashArrToolGetInnerArraySize;
     arr->elementCount = size;
     arr->Data = dataArr_new();
     if (!arr->Data) {

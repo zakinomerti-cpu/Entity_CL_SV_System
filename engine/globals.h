@@ -7,5 +7,6 @@ typedef struct HashArray HashArray;
 extern dataArr* clients;
 extern HashArray* worldList;
 extern HashArray* entList;
+extern dataArr* snaphotList;
 
 #endif
