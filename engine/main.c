@@ -23,7 +23,7 @@ void init() {
 }
 
 void pausen() {
-	usleep(500000); // 500 мс
+	usleep(100000); // 500 мс
 }
 
 int main() {

@@ -28,3 +28,5 @@ target_include_directories(engine PRIVATE
     ${PROJECT_SOURCE_DIR}/tools
     ${PROJECT_SOURCE_DIR}/
 )
+
+target_link_libraries(engine m)

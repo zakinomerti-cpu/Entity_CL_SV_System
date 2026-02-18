@@ -12,9 +12,9 @@ void SEntityTest_setInputData(SEntity* ent, dataArr* data) {
 }
 
 void SEntityTest_onUpdate(SEntity* ent, unsigned int tick) {
-	ent->core->pos[0] += 0.01f;
-	ent->core->pos[1] -= 0.001f;
-	ent->core->pos[2] += 0.002f;
+	ent->core->pos[0] = sinf((float)tick*0.05);
+	ent->core->pos[1] = cosf((float)tick*0.05);
+	ent->core->pos[2] += 0.0002f;
 	printf("%f\t%f\t%f\t%d\n", ent->core->pos[0], 
 		ent->core->pos[1], ent->core->pos[2], tick);
 }
